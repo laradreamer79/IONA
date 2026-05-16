@@ -5,11 +5,14 @@ public class DiverMovement : MonoBehaviour
     public float speed = 3f;
     public float turnSpeed = 120f;
     public float verticalSpeed = 2f;
+    public bool canMove = true; // أضف هذا
 
     void Update()
     {
-        float move = Input.GetAxis("Vertical");   // W/S
-        float turn = Input.GetAxis("Horizontal"); // A/D
+        if (!canMove) return; // أضف هذا
+
+        float move = Input.GetAxis("Vertical");
+        float turn = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector3.forward * move * speed * Time.deltaTime);
         transform.Rotate(Vector3.up * turn * turnSpeed * Time.deltaTime);
